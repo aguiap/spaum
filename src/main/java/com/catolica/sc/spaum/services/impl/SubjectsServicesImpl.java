@@ -52,6 +52,13 @@ public class SubjectsServicesImpl implements SubjectsServices {
     }
 
     @Override
+    public void createMultipleSubjectByCourseId(List<SubjectVo> subjectsVo, Long courseId) {
+        for (SubjectVo subjectVo: subjectsVo) {
+            createSubjectByCourseId(subjectVo, courseId);
+        }
+    }
+
+    @Override
     public void editSubjectByCourseId(SubjectVo subjectVo) {
         Optional<Subjects> byId = subjectsRepository.findById(subjectVo.getId());
         if(byId.isPresent()) {

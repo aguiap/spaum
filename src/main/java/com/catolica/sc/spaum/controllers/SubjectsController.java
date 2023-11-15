@@ -32,6 +32,13 @@ public class SubjectsController {
         return ResponseEntity.ok(subjectsServices.createSubjectByCourseId(subjectVo, courseId));
     }
 
+    @Operation(summary = "Creates multiple disciplines in the course")
+    @PostMapping(value = "/v1/courses/{courseId}/subject/multiple")
+    public ResponseEntity<Long> createSubjectByCourseId(@RequestBody List<SubjectVo> subjectsVo, @PathVariable Long courseId){
+        subjectsServices.createMultipleSubjectByCourseId(subjectsVo, courseId);
+        return ResponseEntity.ok().build();
+    }
+
     @Operation(summary = "Edit discipline in the course")
     @PutMapping(value = "/v1/courses/subject")
     public ResponseEntity<?> editSubjectByCourseId(@RequestBody SubjectVo subjectVo){
