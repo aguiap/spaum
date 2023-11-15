@@ -1,2 +1,2 @@
 ﻿INSERT INTO users (user_name, full_name, password, account_non_expired, account_non_locked, credentials_non_expired, enabled) VALUES
-	('admin', 'Admin', '75ec349c1b0ef4ee7b249d0b83ae4861853f3aa77bce8c4b15f28cd43c6424ab4f29df431831bb0d', true, true, true, true);
+	('admin', 'Admin', '{pbkdf2}c89c6fd097e17e7f3592892e436977ee5bd9d37ee629b26a7d7891ae87d0dfc038e4c3da2c8a2ff2', true, true, true, true);
