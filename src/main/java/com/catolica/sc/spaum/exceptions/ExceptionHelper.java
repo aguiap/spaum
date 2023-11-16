@@ -9,4 +9,8 @@ public class ExceptionHelper {
         return new ApiException(MessageCodeConstants.ERROR_USERNAME_OR_PASSWORD_INVALID, HttpStatus.UNAUTHORIZED);
     }
 
+    public static ApiException duplicateCourse() {
+        return new ApiException(MessageCodeConstants.ERROR_DUPLICATE_COURSE, HttpStatus.FORBIDDEN);
+    }
+
 }

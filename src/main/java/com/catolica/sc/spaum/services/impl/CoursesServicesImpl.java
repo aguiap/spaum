@@ -1,6 +1,7 @@
 package com.catolica.sc.spaum.services.impl;
 
 import com.catolica.sc.spaum.dto.CoursesDTO;
+import com.catolica.sc.spaum.exceptions.ExceptionHelper;
 import com.catolica.sc.spaum.model.Courses;
 import com.catolica.sc.spaum.model.RulesCourse;
 import com.catolica.sc.spaum.repositories.CoursesRepository;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -42,6 +44,9 @@ public class CoursesServicesImpl implements CoursesServices {
     @Override
     @Transactional
     public void editCourse(CourseVo courseVo){
+        Optional<Courses> optionalCourse = coursesRepository.findByName(courseVo.getName());
+        if(optionalCourse.isPresent() && !Objects.equals(optionalCourse.get().getId(), courseVo.getId()))
+            throw ExceptionHelper.duplicateCourse();
         Optional<Courses> course = coursesRepository.findById(courseVo.getId());
         course.ifPresent(courseGet -> {
             courseGet.setName(courseVo.getName());
@@ -60,6 +65,9 @@ public class CoursesServicesImpl implements CoursesServices {
 
     @Override
     public Long createCourse(CourseVo courseVo){
+        Optional<Courses> optionalCourse = coursesRepository.findByName(courseVo.getName());
+        if(optionalCourse.isPresent())
+            throw ExceptionHelper.duplicateCourse();
         Courses createCourse = new Courses();
         createCourse.setName(courseVo.getName());
         createCourse.setEmail(courseVo.getEmail());
