@@ -6,9 +6,9 @@ security:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/spaum?useTimezone=true&serverTimezone=UTC
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://ec2-44-215-1-253.compute-1.amazonaws.com:5432/d4v5m3bd8fo918?useTimezone=true&serverTimezone=UTC
+    username: llvhzeprtvyrbi
+    password: a293b054d5838972b0e8b14b3519300c9370cc875d2f94ff0cc33e3b0a3886f8
     driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: true
